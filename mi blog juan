@@ -1,0 +1,84 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog Personal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        article {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mi Blog Personal</h1>
+    </header>
+    <section id="articles">
+        <!-- Aquí se mostrarán los artículos -->
+    </section>
+    <section>
+        <button id="addArticle" class="btn">Agregar Artículo</button>
+    </section>
+
+    <script>
+        // Array para almacenar los artículos
+        let articles = [];
+
+        // Función para agregar un nuevo artículo
+        function addArticle() {
+            const title = prompt("Ingrese el título del artículo:");
+            const content = prompt("Ingrese el contenido del artículo:");
+            const article = { title, content };
+            articles.push(article);
+            displayArticles();
+        }
+
+        // Función para mostrar los artículos en la página
+        function displayArticles() {
+            const articlesSection = document.getElementById("articles");
+            articlesSection.innerHTML = "";
+            articles.forEach(article => {
+                const articleElement = document.createElement("article");
+                articleElement.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <p>${article.content}</p>
+                `;
+                articlesSection.appendChild(articleElement);
+            });
+        }
+
+        // Event listener para el botón de agregar artículo
+        document.getElementById("addArticle").addEventListener("click", addArticle);
+    </script>
+</body>
+</html>
